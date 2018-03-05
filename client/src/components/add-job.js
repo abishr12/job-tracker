@@ -15,10 +15,12 @@ class AddJobs extends Component {
         )
 
     }
+    onSubmit(values){
+        console.log(values)
+    }
     render() {
         const {handleSubmit} = this.props
-        return (
-            
+        return (  
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 < Field label="Company" name="company" component={this.renderField}/>
                 < Field label="Position" name="position" component={this.renderField}/>
