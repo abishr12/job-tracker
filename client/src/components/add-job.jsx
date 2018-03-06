@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { DropdownList } from "react-widgets";
+import React, {Component} from "react";
+import {Field, reduxForm} from "redux-form";
+import {FormGroup, FormControl, ControlLabel} from "react-bootstrap";
+import {DropdownList} from "react-widgets";
 
 class AddJobs extends Component {
   grabPositions() {
@@ -20,39 +20,35 @@ class AddJobs extends Component {
     return (
       <FormGroup>
         <ControlLabel>{field.label}:</ControlLabel>
-        <br />
-        <FormControl type="text" {...field.input} /> {field.meta.error}
+        <br/>
+        <FormControl type="text" {...field.input}/> {field.meta.error}
       </FormGroup>
     );
   }
 
   renderDropdown(field) {
-    return (
-      <DropdownList
-        {...field.input}
-        data={field.data}
-        onChange={field.input.onChange}
-      />
-    );
+    return (<DropdownList
+      {...field.input}
+      data={field.data}
+      onChange={field.input.onChange}/>);
   }
   onSubmit(values) {
     console.log(values);
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field label="Company" name="company" component={this.renderField} />
+        <Field label="Company" name="company" component={this.renderField}/>
         <Field
           label="Position"
           name="position"
           data={this.grabPositions()}
           valueField="value"
           textField="position"
-          component={this.renderDropdown}
-        />
-        <Field label="Link" name="link" component={this.renderField} />{" "}
+          component={this.renderDropdown}/>
+        <Field label="Link" name="link" component={this.renderField}/>{" "}
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
